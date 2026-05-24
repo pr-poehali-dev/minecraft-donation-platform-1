@@ -116,8 +116,14 @@ export default function InfoSections() {
           <span className="text-xl">🌿</span>
           <span className="font-montserrat font-black text-lg text-white">VaniilaKind</span>
         </div>
-        <p className="text-gray-600 text-sm">© 2024 VaniilaKind. Minecraft сервер для настоящих выживальщиков.</p>
+        <p className="text-gray-600 text-sm">© 2026 VaniilaKind. Minecraft сервер для настоящих выживальщиков.</p>
         <p className="text-gray-700 text-xs mt-1">Не является официальным продуктом Mojang Studios</p>
+        <div className="mt-5 pt-5 border-t border-white/4 flex flex-col items-center gap-1">
+          <p className="text-gray-600 text-xs">Владелец проекта</p>
+          <p className="text-gray-400 text-sm font-semibold">Кирилл К.</p>
+          <p className="text-gray-600 text-xs mt-1">Основная карта для переводов</p>
+          <p className="text-gray-400 font-montserrat font-bold text-sm tracking-widest">2202 2081 3455 9450</p>
+        </div>
       </footer>
     </>
   );
