@@ -129,13 +129,13 @@ export default function InfoSections({ onShopClick }: InfoSectionsProps) {
               <div className="text-[#7c85f7] font-semibold text-sm mt-3">discord.gg/d4Y3PH5TJG</div>
             </a>
             <a
-              href="mailto:admin@vaniilakind.ru"
+              href="mailto:acgrief@mail.ru"
               className="bg-green-500/8 border border-green-500/20 rounded-3xl p-8 text-center hover-lift group block"
             >
               <div className="text-4xl mb-3">📧</div>
               <div className="font-montserrat font-bold text-white mb-1 group-hover:text-green-400 transition-colors">Email</div>
               <div className="text-sm text-gray-500">Для официальных вопросов</div>
-              <div className="text-green-400 font-semibold text-sm mt-3">admin@vaniilakind.ru</div>
+              <div className="text-green-400 font-semibold text-sm mt-3">acgrief@mail.ru</div>
             </a>
             <div className="bg-white/4 border border-white/8 rounded-3xl p-8 text-center">
               <div className="text-4xl mb-3">⏰</div>
