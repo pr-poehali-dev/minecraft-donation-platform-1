@@ -216,7 +216,7 @@ export default function Admin() {
                         </Badge>
                       </div>
                       <div className="text-sm text-gray-400">
-                        {order.type === "sponsor" ? "👑 Подписка Спонсор" : `🏷️ Титул: ${order.titleName}`}
+                        {order.type === "sponsor" ? "👑 Подписка Спонсор" : order.type === "rollback" ? "↩️ Откат ресурсов" : `🏷️ Титул: ${order.titleName}`}
                       </div>
                       {order.promo && (
                         <div className="text-xs text-green-400 font-semibold mt-1">🎟️ Промокод: {order.promo}</div>
@@ -248,7 +248,7 @@ export default function Admin() {
                 <div className="space-y-3 mb-5">
                   {[
                     { label: "Ник", value: selectedOrder.nick },
-                    { label: "Тип", value: selectedOrder.type === "sponsor" ? "Подписка Спонсор" : `Титул: ${selectedOrder.titleName}` },
+                    { label: "Тип", value: selectedOrder.type === "sponsor" ? "Подписка Спонсор" : selectedOrder.type === "rollback" ? "Откат ресурсов" : `Титул: ${selectedOrder.titleName}` },
                     { label: "Сумма", value: `${selectedOrder.amount} ₽`, green: true },
                     ...(selectedOrder.promo ? [{ label: "Промокод", value: selectedOrder.promo }] : []),
                     { label: "Дата", value: new Date(selectedOrder.date).toLocaleString("ru-RU") },

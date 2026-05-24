@@ -11,11 +11,12 @@ const CARD_HOLDER = "Кирилл К.";
 
 type BuyTarget =
   | { type: "sponsor" }
+  | { type: "rollback" }
   | { type: "title"; name: string; price: number };
 
 export interface Order {
   id: string;
-  type: "sponsor" | "title";
+  type: "sponsor" | "rollback" | "title";
   titleName?: string;
   amount: number;
   nick: string;
@@ -114,7 +115,7 @@ export default function Index() {
 
   const handleSubmit = () => {
     if (!nick || !agreed1 || !agreed2 || !receipt) return;
-    const amount = buyModal?.type === "sponsor" ? 299 : (buyModal as { type: "title"; price: number }).price;
+    const amount = buyModal?.type === "sponsor" ? 299 : buyModal?.type === "rollback" ? 299 : (buyModal as { type: "title"; price: number }).price;
     const titleName = buyModal?.type === "title" ? (buyModal as { type: "title"; name: string }).name : undefined;
     const order: Order = {
       id: Date.now().toString(), type: buyModal!.type, titleName, amount,
@@ -130,7 +131,7 @@ export default function Index() {
   };
 
   const canSubmit = nick.trim() && agreed1 && agreed2 && receipt;
-  const modalAmount = buyModal?.type === "sponsor" ? 299 : buyModal?.type === "title" ? buyModal.price : 0;
+  const modalAmount = buyModal?.type === "sponsor" ? 299 : buyModal?.type === "rollback" ? 299 : buyModal?.type === "title" ? buyModal.price : 0;
 
   return (
     <div className="min-h-screen bg-[#0d1117]">
@@ -274,6 +275,48 @@ export default function Index() {
                     onClick={() => openBuy({ type: "sponsor" })}
                   >
                     Оформить подписку
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ROLLBACK */}
+          <div className="mb-16">
+            <h3 className="font-montserrat font-bold text-2xl text-white mb-6 text-center">Разовые услуги</h3>
+            <div className="max-w-lg mx-auto">
+              <div className="relative bg-[#111820] rounded-3xl border border-orange-500/25 shadow-2xl overflow-hidden hover-lift">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-amber-400" />
+                <div className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="text-4xl">↩️</span>
+                    <div>
+                      <div className="font-montserrat font-black text-2xl text-white">Откат ресурсов</div>
+                      <div className="text-gray-500 text-sm">Разовая услуга</div>
+                    </div>
+                  </div>
+                  <div className="text-5xl font-montserrat font-black text-orange-400 mb-2">
+                    299 <span className="text-2xl text-gray-500 font-normal">₽</span>
+                  </div>
+                  <div className="space-y-3 my-6">
+                    {[
+                      { icon: "RotateCcw", text: "Инвентарь или ресурсы вернут назад" },
+                      { icon: "Clock", text: "Разовое использование" },
+                      { icon: "MessageSquare", text: "Выполняется администратором вручную" },
+                    ].map((f) => (
+                      <div key={f.text} className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-orange-500/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Icon name={f.icon as "RotateCcw"} size={15} className="text-orange-400" />
+                        </div>
+                        <span className="text-gray-300 font-medium text-sm">{f.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button
+                    className="w-full bg-orange-500 hover:bg-orange-400 text-black font-montserrat font-black py-4 rounded-2xl text-lg"
+                    onClick={() => openBuy({ type: "rollback" })}
+                  >
+                    Купить откат
                   </Button>
                 </div>
               </div>
@@ -480,6 +523,7 @@ export default function Index() {
             <DialogTitle className="font-montserrat font-black text-2xl text-white">
               {submitted ? "Заявка отправлена! ✅"
                 : buyModal?.type === "sponsor" ? "Оформление подписки Спонсор"
+                : buyModal?.type === "rollback" ? "Покупка отката ресурсов"
                 : "Покупка титула"}
             </DialogTitle>
           </DialogHeader>
@@ -508,6 +552,12 @@ export default function Index() {
                 <div className="bg-green-500/10 border border-green-500/20 rounded-2xl p-4">
                   <div className="font-bold text-white mb-1">Подписка Спонсор</div>
                   <div className="text-green-400 font-black text-xl">299 ₽/месяц</div>
+                </div>
+              )}
+              {buyModal?.type === "rollback" && (
+                <div className="bg-orange-500/10 border border-orange-500/20 rounded-2xl p-4">
+                  <div className="font-bold text-white mb-1">↩️ Откат ресурсов</div>
+                  <div className="text-orange-400 font-black text-xl">299 ₽ · разово</div>
                 </div>
               )}
 
