@@ -119,14 +119,14 @@ export default function InfoSections({ onShopClick }: InfoSectionsProps) {
           </div>
           <div className="grid sm:grid-cols-3 gap-5">
             <a
-              href="https://discord.gg/vaniilakind"
+              href="https://discord.gg/d4Y3PH5TJG"
               target="_blank" rel="noopener noreferrer"
               className="bg-[#5865F2]/10 border border-[#5865F2]/25 rounded-3xl p-8 text-center hover-lift group block"
             >
               <div className="text-4xl mb-3">💬</div>
               <div className="font-montserrat font-bold text-white mb-1 group-hover:text-[#7c85f7] transition-colors">Discord</div>
               <div className="text-sm text-gray-500">Основной канал связи</div>
-              <div className="text-[#7c85f7] font-semibold text-sm mt-3">discord.gg/vaniilakind</div>
+              <div className="text-[#7c85f7] font-semibold text-sm mt-3">discord.gg/d4Y3PH5TJG</div>
             </a>
             <a
               href="mailto:admin@vaniilakind.ru"

@@ -16,7 +16,7 @@ export default function NavBar() {
         </div>
         <div className="flex items-center gap-3">
           <a
-            href="https://discord.gg/vaniilakind"
+            href="https://discord.gg/d4Y3PH5TJG"
             target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[#5865F2] text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#4752c4] transition-colors"
           >
