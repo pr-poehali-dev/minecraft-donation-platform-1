@@ -6,7 +6,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 
-const CARD_NUMBER = "2200 7013 9217 4521";
+const CARD_NUMBER = "2202 2081 3455 9450";
+const CARD_HOLDER = "Кирилл К.";
 
 type BuyTarget =
   | { type: "sponsor" }
@@ -518,7 +519,10 @@ export default function Index() {
                     {copied ? "Скопировано" : "Копировать"}
                   </button>
                 </div>
-                <div className="text-green-400 font-black text-2xl mt-3">{modalAmount} ₽</div>
+                <div className="flex items-end justify-between mt-3">
+                  <div className="text-green-400 font-black text-2xl">{modalAmount} ₽</div>
+                  <div className="text-gray-400 text-sm">{CARD_HOLDER}</div>
+                </div>
               </div>
 
               {/* NICK */}
